@@ -1,0 +1,297 @@
+/*Variables */
+@background-color: white;
+@font-family: tahoma;
+@primary-color: #3b5998;
+@seconday-color: #20B2AA;
+@line-height: 1em + 1em;
+
+
+//mixins
+.text-color(@a) when (lightness(@a) >= 50%){
+	color: black;
+}
+
+.text-color(@a) when (lightness(@a) < 50%){
+	color: white;
+}
+
+.noBorderClass {
+	border: none;
+}
+
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+}
+
+// Is this working?
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Set every element's box-sizing to border-box */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+	background-color: @background-color;
+	.text-color(@background-color);
+	font-family: 'Baloo 2';
+
+	.header {
+		text-align: center;
+		font-size: 3rem;
+		margin-top: 40px;
+
+		@media (max-width: 500px) {
+			font-size: 1.3rem;
+		}
+
+		.nav {
+			display: flex;
+			justify-content: center;
+			margin-top: 10px;
+			padding: 0% 10%;
+			width: 100%;
+
+			@media (max-width: 800px) {
+				justify-content: center;
+			}
+
+			@media (max-width: 500px) {
+				flex-direction: column;
+			}
+
+			a {
+				text-decoration: none;
+				border: 2px solid purple;
+				border-radius: 10px;
+				padding: 5px 10px;
+				margin: 0px 5px;
+				font-size: 1.5rem;
+				.text-color(@background-color);
+			}
+		}
+	}
+
+	.midContent {
+		display: flex;
+		margin: 3% 0px 0px 0px;
+		justify-content: space-evenly;
+		border: 1px solid green;
+		.noBorderClass();
+
+		@media (max-width: 800px){
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+
+		@media (max-width: 500px) {
+			.flexColumn();
+		}
+
+
+		.hireMe {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			border: 1px solid red;
+			width: 20%;
+			.noBorderClass();
+
+			@media (max-width: 800px) {
+				width: 80%;
+				padding-left: 70px;
+			}
+
+			@media (max-width: 500px) {
+				padding-left: 10px;
+			}
+	
+			h2 {
+				font-size: 1.3rem;
+				padding: 5%;
+				font-weight: bold;
+			}
+	
+			p {
+				text-indent: 20px;
+			}
+		}
+
+		.skills {
+			border: 1px solid red;
+			.noBorderClass();
+			.flexColumn();
+			width: 30%;
+
+			@media (max-width: 800px){
+				padding: 10%;
+				width: 100%;
+			}
+
+			@media (max-width: 500px) {
+				width: 100%;
+			}
+
+			p.title {
+				font-size: 1.5rem;
+				border: none;
+				font-weight: bold;
+				text-align: center;
+			}
+
+			p {
+				padding: 5%;
+				border: 1px solid black;
+			}
+
+			p:nth-child(even){
+				background-color: lightblue;
+			}
+		}
+	}
+
+	.workAndContact {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+
+		@media (max-width: 800px) {
+			.flexColumn();
+			align-items: center;
+		}
+		
+		.workHistory {
+			border: 1px solid red;
+			margin: 5% 0px 0px;
+			.noBorderClass();
+			.flexColumn();
+			width: 100%;
+			align-items: center;
+
+			@media (max-width: 500px) {
+				table {
+					width: 80%;
+					padding: 0px;
+
+					th:nth-child(1){
+						display: none;
+					}
+					th:nth-child(4){
+						display:none;
+					}
+					td:nth-child(1){
+						display:none;
+					}
+					td:nth-child(4){
+						display:none;
+					}
+				}
+			}
+			
+			p.title {
+				display: flex;
+				text-decoration: underline;
+				font-size: 1.5rem;
+				height: 50px;
+				justify-content: center;
+				align-items: center;
+			}
+
+			table {
+				background-color: lightblue;
+				border: 1px solid grey;
+				width: 80%;
+
+				th {
+					font-weight: bold;
+					padding: 10px;
+				}
+
+				td {
+					padding: 10px;
+				}
+
+				td:nth-child(1) {
+					text-align: center;
+				}
+
+				tr:nth-child(even){
+					background-color: lightgrey;
+					border-bottom: 1px solid grey;
+					border-top: 1px solid grey;
+				}
+			}
+		}
+
+		.contact{
+			border: 1px solid red;
+			.flexColumn();
+			justify-content: flex-end;
+			.noBorderClass();
+			padding: 30px 100px 30px 0px;
+
+			h2 {
+				font-weight: bold;
+			}
+
+			@media (max-width: 800px) {
+				margin: 5%;
+				padding: 30px 0px;
+			}
+		}
+	}
+}
